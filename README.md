@@ -23,3 +23,11 @@ chmod u+x ./youtube.sh
 Si vous n'a vez pas git :
 
 sudo apt-get install git
+
+# Petit plus
+
+Si vous le souhaitez en chageant la ligne 36 comme suit :
+
+ret=$(youtube-dl $URLC -f $ret2 -o "/media/www/%(title)s.%(ext)s" | tail -n 1)
+
+Vous pouvez modifier le repértoire où vous souhaitez stocker le vidéo, de plus rien ne vous empêche de rajouter toutes les options que vous souhaitez.
