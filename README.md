@@ -13,8 +13,11 @@ Ce script permet de télécharger des vidéos sur youtube de façon très simple
 # Installation 
 
 Copier ce script dans le répertoire de votre choix en utilisant la commande suivante
+
 git clone https://github.com/Scoob79/youtube-dl-Script.git
+
 cd youtube-dl-Script/
+
 chmod u+x ./youtube.sh
 
 Si vous n'a vez pas git :
