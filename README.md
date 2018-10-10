@@ -9,3 +9,8 @@ Ce script permet de télécharger des vidéos sur youtube de façon très simple
   Pour utiliser ce script vous avez deux solutions :
     - ./youtube.sh ensuite entrez directement l'URL ou le code de la vidéo
     - ./youtube.sh https://www.youtube.com/watch?v=xxxxxxxxxxx ou ./youtube xxxxxxxxxxx
+
+# Installation 
+
+Copier ce script dans le répertoire de votre choix en utilisant la commande suivante
+git 
