@@ -13,20 +13,25 @@ if [ "$1" == "--help" ];then
   exit 1
 fi
 
-if [ "$1" == "" ];then # Si le paramètre n'est pas passer dans la commande alors on pose la question
+f [ "$1" == "" ];then # Si le paramètre n'est pas passer dans la commande alors on pose la question
   echo Code de la vidéo ou URL :
   read URL
 
   var1=$(echo $URL | grep "https://www.youtube.com/watch?v")
   if [ "$var1" == "" ]; then
     URLC="https://www.youtube.com/watch?v=$URL"
+  else
+    URLC=$URL
   fi
 else # Sinon on le récupère pour créer URLC
   var1=$(echo $1 | grep "https://www.youtube.com/watch?v")
   if [ "$var1" == "" ]; then
     URLC="https://www.youtube.com/watch?v=$1"
+  else
+    URLC=$1
   fi
 fi
+
 
 ret=$(youtube-dl -F $URLC | tail -n 1)
 ret2=$(echo $ret | cut -d' ' -f1)
@@ -36,11 +41,13 @@ echo Téléchargement en cours, merci de patienter.
 ret=$(youtube-dl $URLC -f $ret2 | tail -n 1)
 echo $ret
 
+ret3=$(df -h | tail -n 1)
 
 var1=$(echo $ret | grep "100%")
 
 if [ "$var1" != "" ];then
-  echo Téléchargement réussi 
+  echo -e "\033[36m$ret3\033[0m"
+  echo -e "\033[32mTéléchargement réussi\033[0m"
 else
-  echo Téléchargement échoué
+  echo -e "\033[31mTéléchargement échoué\033[0m"
 fi
