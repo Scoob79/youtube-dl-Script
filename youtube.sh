@@ -13,7 +13,9 @@ if [ "$1" == "--help" ];then
   exit 1
 fi
 
-f [ "$1" == "" ];then # Si le paramètre n'est pas passer dans la commande alors on pose la question
+cd /media/www
+
+if [ "$1" == "" ];then # Si le paramètre n'est pas passer dans la commande alors on pose la question
   echo Code de la vidéo ou URL :
   read URL
 
@@ -32,13 +34,12 @@ else # Sinon on le récupère pour créer URLC
   fi
 fi
 
-
 ret=$(youtube-dl -F $URLC | tail -n 1)
 ret2=$(echo $ret | cut -d' ' -f1)
 
 echo Téléchargement en cours, merci de patienter.
 
-ret=$(youtube-dl $URLC -f $ret2 | tail -n 1)
+ret=$(youtube-dl $URLC -f $ret2 -o "/media/www/%(title)s.%(ext)s" --download-archive /media/www/youtube-dl-archive | tail -n 1)
 echo $ret
 
 ret3=$(df -h | tail -n 1)
